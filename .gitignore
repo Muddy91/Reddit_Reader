@@ -1,0 +1,3 @@
+
+# Don't check in credentials 
+config/env.yml
