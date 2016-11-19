@@ -34,6 +34,8 @@ class Execution
                                  "limit" => "1"}))
     puts "\n\nInformation on the user's worst preformer"
       display_worst(target)
+    puts "\n\nEvery subreddit contributed to"
+      display_subreddits(target)
 
   end
 
@@ -62,6 +64,7 @@ class Execution
     #this is not going to be easy
     #the basic theory is that we take an username, we call the api to get their posts over and over until there are no more left and get the subreddit out of each. 
     #also inperfect, reddit caps us at the last 1000 posts from an user
+    
     subreddit = []
     last = ""
     total = 0
@@ -71,6 +74,7 @@ class Execution
       posts = @retriver.get_comment(target, {"sort" => "top",
                                   "limit" => "99",
                                   "after" => last})
+      return unless @display.user_exists?(posts)
       posts["data"]["children"].each_with_index do |post|
         subreddit << post["data"]["subreddit"]
         total += 1
@@ -88,6 +92,7 @@ class Execution
 
   def generate_worst(target)
     #naturally reddit doesn't provide downvote data. 
+    return unless @display.user_exists?(target)
     low_post = nil
     score = 200000
     last = ""
@@ -97,6 +102,7 @@ class Execution
       posts = @retriver.get_comment(target, {"sort" => "top",
                                   "limit" => "99",
                                   "after" => last})
+      return unless @display.user_exists?(posts)
 
       posts["data"]["children"].each do |post|
         if post["data"]["score"] < score

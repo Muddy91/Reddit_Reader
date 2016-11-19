@@ -60,6 +60,7 @@ class Display
   end
 
   def display_stats(special_hash)
+    return if special_hash.nil?
     special_hash[:list].reverse!
     if special_hash[:list].empty?
       puts "No stats are available"
@@ -70,12 +71,13 @@ class Display
     puts "They have #{special_hash[:list][0][1]} posts/comments there"
     puts "That's #{(precent*100).round(4)} precent of their posts "
 
-    puts "Their second favorite subreddit is #{special_hash[:list][1][0]}"
-    puts "Their third favorite subreddit is #{special_hash[:list][2][0]}"
+    puts "Their second favorite subreddit is #{special_hash[:list][1][0]}" unless special_hash[:list][1].nil?
+    puts "Their third favorite subreddit is #{special_hash[:list][2][0]}" unless special_hash[:list][2].nil?
     
   end
 
   def display_worst(content)
+    return if content.nil?
     if content == false
       puts "Not available"
       return
@@ -95,6 +97,9 @@ class Display
   end
 
   def display_all_subreddits(special_hash)
+    if special_hash.nil?
+      return
+    end
     puts "This is the list of all subreddits they've contributed to"
     pp special_hash[:list].reverse!
     puts "This is the total of contributions. Capped at 1000."

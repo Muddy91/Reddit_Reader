@@ -3,5 +3,3 @@ require_relative "display"
 require_relative "processes"
 
 Execution.new.report
-
-Execution.new.display_subreddits
