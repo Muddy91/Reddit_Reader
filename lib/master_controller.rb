@@ -4,4 +4,4 @@ require_relative "processes"
 
 Execution.new.report
 
-# Execution.new.display_subreddits
+Execution.new.display_subreddits

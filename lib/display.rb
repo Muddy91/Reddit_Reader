@@ -70,8 +70,8 @@ class Display
     puts "They have #{special_hash[:list][0][1]} posts/comments there"
     puts "That's #{(precent*100).round(4)} precent of their posts "
 
-    puts "Their second favorite subreddit is #{special_hash[:list][1][1]}"
-    puts "Their third favorite subreddit is #{special_hash[:list][2][1]}"
+    puts "Their second favorite subreddit is #{special_hash[:list][1][0]}"
+    puts "Their third favorite subreddit is #{special_hash[:list][2][0]}"
     
   end
 

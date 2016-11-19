@@ -51,8 +51,8 @@ class Execution
     @display.display_stats(rhash)
   end
 
-  def display_subreddits
-    rhash = generate_subs_frequented
+  def display_subreddits(target = @display.designate_target)
+    rhash = generate_subs_frequented(target)
     @display.display_all_subreddits(rhash)
   end
 
