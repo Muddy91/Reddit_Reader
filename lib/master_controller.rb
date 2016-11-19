@@ -1,5 +1,7 @@
 require_relative "reddit_retriever"
+require_relative "display"
+require_relative "processes"
 
-r = RedditRetriever.new("simple_bot")
-r.get_oath_token
-r.get_user_karma
+Execution.new.report
+
+# Execution.new.display_subreddits
